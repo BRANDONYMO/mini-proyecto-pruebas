@@ -25,3 +25,9 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    -name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Correr Linter
+      run: npm run lint
+    - name: Run Playwright tests
+      run: npx playwright test

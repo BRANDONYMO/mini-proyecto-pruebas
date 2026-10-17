@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Acceso al Sistema</title></head>
+<body>
+    <main>
+        <h1>Iniciar sesión</h1>
+        <form id="loginForm">
+            <div><label for="usuario">Usuario</label><input type="text" id="usuario" name="usuario"></div>
+            <div><label for="password">Contraseña</label><input type="password" id="password"></div>
+            <button type="submit">Entrar</button>
+            <p id="error" role="alert" style="display: none;"></p>
+        </form>
+    </main>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('usuario').value;
+            const pass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error');
+            if (!user || !pass) { errorMsg.textContent = 'Faltan campos'; errorMsg.style.display = 'block'; }
+            else if (user === 'admin' && pass === '1234') { window.location.href = '/dashboard.html'; }
+            else { errorMsg.textContent = 'Error'; errorMsg.style.display = 'block'; }
+        });
+    </script>
+</body>
+</html>
